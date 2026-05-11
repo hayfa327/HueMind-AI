@@ -1,4 +1,4 @@
-# 🎨 HueMind AI
+#  HueMind AI
 
 > AI-powered design system assistant for generating color palettes, typography systems, themes, accessibility recommendations, and UI inspiration.
 
@@ -105,3 +105,47 @@ Example:
     "body": "Inter"
   }
 }
+
+---
+
+#  Styling Architecture
+
+HueMind AI uses a scalable styling architecture based on:
+
+- CSS Modules for component-level styling isolation
+- CSS Variables for design tokens and semantic theming
+- Reusable design system components
+- Consistent spacing and typography systems
+
+This approach improves:
+- maintainability
+- scalability
+- styling consistency
+- theme management
+- reusable UI architecture
+
+---
+
+#  Tech Stack
+
+## Frontend
+- React
+- TypeScript
+- Vite
+
+## Styling
+- CSS Modules
+- CSS Variables
+- Design Tokens
+
+## APIs & AI
+- OpenAI API
+- The Color API
+- Unsplash API
+
+## Development Tools
+- Storybook
+- ESLint
+- Prettier
+- Vitest
+- React Testing Library
