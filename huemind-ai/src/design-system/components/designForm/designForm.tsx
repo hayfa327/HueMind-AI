@@ -1,65 +1,159 @@
-import Button from "../button/button"
 
-import Input from '../input/input';
-
-import Select from '../select/select'; 
 
 import styles from './designForm.module.css';
 
+import HeroTitle from '../heroTitle/herotitle';
+
 function DesignForm() {
-  return (
+   return (
     <section className={styles.container}>
-      <div className={styles.logo} />
+      <div className={styles.formWrapper}>
+        <div className={styles.content}>
+          <HeroTitle />
 
-      <h1 className={styles.title}>
-        AI Design System Assistant
-      </h1>
+          <p className={styles.description}>
+            Generate beautiful, consistent design foundations
+            with AI. Colors, typography, and tokens in seconds.
+          </p>
+        </div>
 
-      <p className={styles.description}>
-        Generate a complete UI design foundation
-        for your project.
-      </p>
+        <form className={styles.form}>
+          <div className={styles.field}>
+            <label
+              htmlFor="project-name"
+              className={styles.label}
+            >
+              Project Name
+            </label>
 
-      <form className={styles.form}>
-        <Input
-          label="Application or Brand Name"
-          placeholder="e.g., FitFlow"
-        />
+            <input
+              id="project-name"
+              type="text"
+              placeholder="FitFlow"
+              className={styles.input}
+            />
+          </div>
 
-        <Select
-          label="Industry Type"
-          options={[
-            'Fintech',
-            'Travel',
-            'Fitness',
-            'Education',
-          ]}
-        />
+          <div className={styles.field}>
+            <label
+              htmlFor="industry"
+              className={styles.label}
+            >
+              Industry
+            </label>
 
-        <Input
-          label="Target Audience"
-          placeholder="Young adults, students..."
-        />
+            <select
+              id="industry"
+              className={styles.select}
+            >
+              <option>Choose one</option>
 
-        <Input
-          label="Country or Region"
-          placeholder="Sweden, United States..."
-        />
+              <option>Travel</option>
 
-        <Select
-          label="Preferred Style"
-          options={[
-            'Minimal',
-            'Modern',
-            'Glassmorphism',
-            'Corporate',
-          ]}
-        />
+              <option>Finance</option>
 
-        <Button label="Generate Design System" />
-      </form>
+              <option>Healthcare</option>
+
+              <option>Education</option>
+
+              <option>E-commerce</option>
+            </select>
+          </div>
+
+          <div className={styles.field}>
+            <label
+              htmlFor="audience"
+              className={styles.label}
+            >
+              Audience
+            </label>
+
+            <input
+              id="audience"
+              type="text"
+              placeholder="Young professionals"
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label
+              htmlFor="location"
+              className={styles.label}
+            >
+              Location
+            </label>
+
+            <input
+              id="location"
+              type="text"
+              placeholder="Sweden"
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label
+              htmlFor="style"
+              className={styles.label}
+            >
+              Visual Style
+            </label>
+
+            <select
+              id="style"
+              className={styles.select}
+            >
+              <option>Choose one</option>
+
+              <option>Minimal</option>
+
+              <option>Luxury</option>
+
+              <option>Glassmorphism</option>
+
+              <option>Modern</option>
+
+              <option>Editorial</option>
+            </select>
+          </div>
+
+          <div className={styles.field}>
+            <label
+              htmlFor="personality"
+              className={styles.label}
+            >
+              Personality
+            </label>
+
+            <select
+              id="personality"
+              className={styles.select}
+            >
+              <option>Choose one</option>
+
+              <option>Elegant</option>
+
+              <option>Playful</option>
+
+              <option>Professional</option>
+
+              <option>Bold</option>
+
+              <option>Creative</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className={styles.button}
+          >
+            Generate System →
+          </button>
+        </form>
+      </div>
     </section>
-  );
+  )
 }
 
 export default DesignForm;
