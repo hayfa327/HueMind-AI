@@ -1,4 +1,4 @@
-import styles from './Button.module.css';
+import styles from './button.module.css';
 import type { ButtonProps } from './button.types';
 
 function Button({ label, onClick }: ButtonProps) {
