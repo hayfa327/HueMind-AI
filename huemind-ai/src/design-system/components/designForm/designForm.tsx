@@ -10,8 +10,9 @@ import LoadingScreen from '../loadingScreen/loadingScreen';
 
 function DesignForm() {
 const [loading, setLoading] = useState(false)
+const [result, setResult] = useState('')
 
-  const handleSubmit = (
+   const handleSubmit = async (
   event: React.FormEvent
 ) => {
   event.preventDefault()
@@ -19,6 +20,17 @@ const [loading, setLoading] = useState(false)
   setLoading(true)
 
   setTimeout(() => {
+    setResult(`
+Primary Color: #7C3AED
+
+Typography: Inter
+
+Style: Minimal Modern
+
+Accessibility:
+WCAG AA compliant
+    `)
+
     setLoading(false)
   }, 4000)
 }
@@ -27,6 +39,19 @@ const [loading, setLoading] = useState(false)
   return <LoadingScreen />
 }
 
+if (result) {
+  return (
+    <section className={styles.resultPage}>
+      <h2 className={styles.resultTitle}>
+        Generated Design System
+      </h2>
+
+      <pre className={styles.resultBox}>
+        {result}
+      </pre>
+    </section>
+  )
+}
 
    return (
     <section className={styles.container}>
