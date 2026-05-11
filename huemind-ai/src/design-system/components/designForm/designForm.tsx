@@ -1,10 +1,33 @@
-
+import React, { useState } from 'react';
 
 import styles from './designForm.module.css';
 
 import HeroTitle from '../heroTitle/herotitle';
 
+import LoadingScreen from '../loadingScreen/loadingScreen';
+
+
+
 function DesignForm() {
+const [loading, setLoading] = useState(false)
+
+  const handleSubmit = (
+  event: React.FormEvent
+) => {
+  event.preventDefault()
+
+  setLoading(true)
+
+  setTimeout(() => {
+    setLoading(false)
+  }, 4000)
+}
+
+ if (loading) {
+  return <LoadingScreen />
+}
+
+
    return (
     <section className={styles.container}>
       <div className={styles.formWrapper}>
@@ -17,7 +40,7 @@ function DesignForm() {
           </p>
         </div>
 
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
             <label
               htmlFor="project-name"

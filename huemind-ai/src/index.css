@@ -1,7 +1,5 @@
  :root {
-  /* =========================
-     COLORS
-  ========================== */
+ 
 
   --color-primary: #111827;
   --color-primary-light: #1f2937;
@@ -17,9 +15,7 @@
   --color-accent-blue: #3b82f6;
   --color-accent-purple: #8b5cf6;
 
-  /* =========================
-     SPACING
-  ========================== */
+  
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -27,33 +23,25 @@
   --spacing-lg: 24px;
   --spacing-xl: 40px;
 
-  /* =========================
-     RADIUS
-  ========================== */
+ 
 
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 28px;
 
-  /* =========================
-     SHADOWS
-  ========================== */
+  
 
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.04);
 
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
 
-  /* =========================
-     TYPOGRAPHY
-  ========================== */
+ 
 
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
 
-/* =========================
-   RESET
-========================== */
+ 
 
 * {
   margin: 0;
@@ -72,9 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================== */
+ 
 
 h1,
 h2,
