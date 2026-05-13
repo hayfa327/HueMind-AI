@@ -1,151 +1,167 @@
-#  HueMind AI
+# HueMind AI 
 
-> AI-powered design system assistant for generating color palettes, typography systems, themes, accessibility recommendations, and UI inspiration.
+> **AI-powered design system generation — from brand intent to production-ready tokens in seconds.**
 
----
-
-## ⚠️ Work in Progress
-
-HueMind AI is currently under active development as part of a frontend engineering and design systems study project.
-
-The current focus includes:
-- AI-generated design systems
-- semantic color palettes
-- typography recommendations
-- accessibility-aware UI guidance
-- scalable frontend architecture
-- reusable design system components
-
-Future improvements and advanced integrations are planned.
+HueMind AI was built to explore the intersection of artificial intelligence, design systems, accessibility, and modern frontend architecture. It's not just a color picker — it's a full design system generator that thinks in tokens, scales, and semantics.
 
 ---
 
-#  Overview
+##  Features
 
-HueMind AI helps developers, designers, startups, and students quickly generate modern UI foundations using artificial intelligence.
-
-Instead of manually selecting colors, fonts, spacing systems, and themes, users can describe their project idea and receive a complete AI-generated design direction tailored to:
-- industry
-- target audience
-- country/region
-- visual style
-- brand personality
-
-The application combines:
-- AI-assisted design generation
-- design system thinking
-- scalable frontend architecture
-- accessibility best practices
-- modern UI inspiration
+| Feature | Description |
+|---|---|
+| 🎨 **Palette Generation** | AI-generates harmonious color palettes tailored to your brand personality |
+| 🔤 **Typography Systems** | Complete type scales with pairing recommendations and optical sizing |
+| ♿ **Accessibility Analysis** | WCAG contrast ratios, AA/AAA compliance checks, and remediation suggestions |
+| 🏷️ **Semantic Tokens** | Design tokens structured for real-world use: `color.surface.default`, `text.brand.primary` |
+| 🤖 **AI-Driven Branding** | Describe your brand in plain English — HueMind does the rest |
 
 ---
 
-#  Features
+## 🛠 Tech Stack
 
-## ✅ Current Features
-
-###  AI Color Palette Generation
-Generate semantic color systems including:
-- Primary
-- Secondary
-- Accent
-- Background
-- Text colors
-
----
-
-###  Typography Recommendations
-AI-generated typography pairing suggestions:
-- Heading fonts
-- Body fonts
-- UI hierarchy recommendations
+```
+React 18          → Component architecture & UI
+TypeScript        → Type safety across the entire codebase
+Vite              → Blazing-fast dev server & build tooling
+CSS Modules       → Scoped, maintainable styling
+OpenAI API        → AI palette, token, and typography generation
+Framer Motion     → Fluid animations and transition design
+Storybook         → Component development & design system documentation
+```
 
 ---
 
-###  Theme & Style Suggestions
-Generate visual direction recommendations such as:
-- Minimal Clean
-- Scandinavian
-- Glassmorphism
-- Dark Modern
-- Corporate Fintech
+## 🏗 Architecture
+
+HueMind is structured around four core layers:
+
+```
+src/
+├── components/          # Reusable, atomic UI components
+│   ├── ColorSwatch/
+│   ├── TokenDisplay/
+│   ├── TypographyScale/
+│   └── AccessibilityBadge/
+│
+├── features/            # Domain-specific feature modules
+│   ├── palette/         # Palette generation & display
+│   ├── typography/      # Type system generation
+│   ├── tokens/          # Semantic token builder
+│   └── accessibility/   # WCAG analysis & reporting
+│
+├── services/            # External integrations & business logic
+│   ├── openai.ts        # AI prompt orchestration
+│   ├── tokenizer.ts     # Token naming & structure
+│   └── a11y.ts          # Contrast ratio calculations
+│
+└── state/               # Global state management
+    ├── designSystemStore.ts
+    └── sessionStore.ts
+```
 
 ---
 
-###  UX & Accessibility Recommendations
-Built-in UX guidance including:
-- WCAG contrast recommendations
-- responsive design practices
-- visual hierarchy suggestions
-- touch target recommendations
+##  AI Workflow
+
+Every design system starts with a single user prompt. Here's how HueMind turns intent into tokens:
+
+```
+User Input (brand description)
+        ↓
+  Prompt Engineering
+  (context + constraints injected)
+        ↓
+  OpenAI API Request
+        ↓
+  Structured JSON Response
+  (palette, typography, tokens)
+        ↓
+  Validation + Normalization
+        ↓
+  Dynamic UI Rendering
+  (live preview, exportable output)
+```
+
+Example prompt sent to OpenAI:
+> *"A fintech startup targeting Gen Z. Bold but trustworthy. Dark mode first."*
+
+HueMind returns a complete design system: primary/secondary/neutral palettes, a type scale, semantic token names, and accessibility scores — all in one response.
 
 ---
 
-###  Design Inspiration
-Display visual inspiration examples related to the generated design direction.
+##  Getting Started
+
+### Prerequisites
+
+- Node.js `>=18`
+- An OpenAI API key
+
+### Installation
+
+```bash
+git clone  https://github.com/hayfa327/HueMind-AI.git
+cd huemind-ai
+npm install
+```
+
+### Development
+
+```bash
+npm run dev          # Start Vite dev server
+npm run storybook    # Launch Storybook component explorer
+npm run build        # Production build
+```
 
 ---
 
-###  Exportable Design Tokens
-Export generated design systems in JSON format for:
-- frontend development
-- Figma workflows
-- design token systems
+##  Environment Variables
 
-Example:
+Create a `.env.local` file in the project root:
 
-```json
-{
-  "colors": {
-    "primary": "#18181B",
-    "accent": "#3B82F6"
-  },
-  "typography": {
-    "heading": "Poppins",
-    "body": "Inter"
-  }
-}
+```env
+VITE_OPENAI_API_KEY=your_openai_api_key_here
+```
+
+>  Never commit your `.env.local` file. It's already in `.gitignore`.
 
 ---
 
-#  Styling Architecture
+##  Roadmap
 
-HueMind AI uses a scalable styling architecture based on:
+These features are planned or actively being explored:
 
-- CSS Modules for component-level styling isolation
-- CSS Variables for design tokens and semantic theming
-- Reusable design system components
-- Consistent spacing and typography systems
-
-This approach improves:
-- maintainability
-- scalability
-- styling consistency
-- theme management
-- reusable UI architecture
+- [ ] **Figma Export** — Push generated tokens directly into a Figma file via the API
+- [ ] **Tailwind Export** — One-click `tailwind.config.js` generation from your token set
+- [ ] **Theme Marketplace** — Browse, fork, and remix community-generated design systems
+- [ ] **Saved Projects** — Persist and version your design systems across sessions
+- [ ] **Authentication** — User accounts with project history and team sharing
+- [ ] **CSS / JSON Export** — Download tokens in W3C Design Token format
+- [ ] **Dark Mode Toggle** — Preview your system in both light and dark contexts
 
 ---
 
-#  Tech Stack
+##  Work in Progress
 
-## Frontend
-- React
-- TypeScript
-- Vite
+HueMind is under active development. The current focus is:
 
-## Styling
-- CSS Modules
-- CSS Variables
-- Design Tokens
+- Refining the AI prompt structure for more consistent JSON output
+- Building out the token display UI with copy-to-clipboard support
+- Accessibility score visualization (chart-based WCAG reporting)
+- Storybook documentation for all core components
 
-## APIs & AI
-- OpenAI API
-- The Color API
-- Unsplash API
+Screenshots will be added once the UI reaches a stable visual design.
 
-## Development Tools
-- Storybook
-- ESLint
-- Prettier
-- Vitest
-- React Testing Library
+---
+
+##  Why This Project Exists
+
+Most design tools are disconnected from the *thinking* behind design systems. HueMind AI was created to close that gap — letting developers and designers describe what they want in natural language, and receive structured, production-ready output that respects real design system principles.
+
+It's also a personal deep-dive into prompt engineering, structured AI output, and the challenge of making AI output feel *intentional* rather than random.
+
+---
+
+##  License
+
+MIT © HueMind AI

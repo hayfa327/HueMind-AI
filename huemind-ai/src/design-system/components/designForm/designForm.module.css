@@ -232,3 +232,119 @@
     height: 68px;
   }
 }
+
+.resultPage {
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding: 80px 32px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(59, 130, 246, 0.05),
+      transparent 30%
+    ),
+    #f6f5f2;
+}
+
+.resultContainer {
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+.resultTitle {
+  font-size: 72px;
+
+  line-height: 0.95;
+
+  letter-spacing: -4px;
+
+  margin-bottom: 64px;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+/* =========================
+   PALETTE
+========================= */
+
+.paletteGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 32px;
+
+  margin-bottom: 56px;
+}
+
+.colorCard {
+  background: white;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.colorPreview {
+  height: 220px;
+}
+
+.colorInfo {
+  padding: 24px;
+}
+
+.colorInfo h3 {
+  font-size: 24px;
+
+  margin-bottom: 8px;
+}
+
+.colorInfo p {
+  color: #737373;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.typographyCard,
+.accessibilityCard {
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 32px;
+
+  margin-bottom: 32px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.label {
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+
+  color: #737373;
+
+  margin-bottom: 16px;
+}
+
+.typographyCard h3 {
+  font-size: 48px;
+
+  margin-bottom: 16px;
+}

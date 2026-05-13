@@ -46,9 +46,68 @@ if (result) {
         Generated Design System
       </h2>
 
-      <pre className={styles.resultBox}>
-        {result}
-      </pre>
+       <section className={styles.resultPage}>
+  <div className={styles.resultContainer}>
+    <h2 className={styles.resultTitle}>
+      Generated Design System
+    </h2>
+
+    <div className={styles.paletteGrid}>
+      <div className={styles.colorCard}>
+        <div
+          className={styles.colorPreview}
+          style={{
+            background: '#7C3AED',
+          }}
+        />
+
+        <div className={styles.colorInfo}>
+          <h3>Primary</h3>
+
+          <p>#7C3AED</p>
+        </div>
+      </div>
+
+      <div className={styles.colorCard}>
+        <div
+          className={styles.colorPreview}
+          style={{
+            background: '#3B82F6',
+          }}
+        />
+
+        <div className={styles.colorInfo}>
+          <h3>Accent</h3>
+
+          <p>#3B82F6</p>
+        </div>
+      </div>
+    </div>
+
+    <div className={styles.typographyCard}>
+      <p className={styles.label}>
+        Typography
+      </p>
+
+      <h3>Inter</h3>
+
+      <p>
+        Minimal modern typography system
+      </p>
+    </div>
+
+    <div className={styles.accessibilityCard}>
+      <p className={styles.label}>
+        Accessibility
+      </p>
+
+      <p>
+        WCAG AA compliant with accessible
+        contrast ratios.
+      </p>
+    </div>
+  </div>
+</section>
     </section>
   )
 }
