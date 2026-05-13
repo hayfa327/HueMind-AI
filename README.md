@@ -18,7 +18,7 @@ HueMind AI was built to explore the intersection of artificial intelligence, des
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ```
 React 18          → Component architecture & UI
@@ -32,7 +32,7 @@ Storybook         → Component development & design system documentation
 
 ---
 
-## 🏗 Architecture
+##  Architecture
 
 HueMind is structured around four core layers:
 
