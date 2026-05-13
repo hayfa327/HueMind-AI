@@ -7,6 +7,7 @@ function App() {
   
 
   return (
+    
       <main className={styles.container}>
         <DesignForm />
     </main>
