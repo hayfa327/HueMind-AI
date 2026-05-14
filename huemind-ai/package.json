@@ -1,5 +1,6 @@
 {
   "name": "huemind-ai",
+   "homepage": "https://hayfa327.github.io/HueMind-AI/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +11,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -40,6 +43,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.4.0",
+    "gh-pages": "^6.3.0",
     "globals": "^17.5.0",
     "playwright": "^1.60.0",
     "storybook": "^10.4.0",
