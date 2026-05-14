@@ -11,13 +11,13 @@ export async function generateDesignSystem(formData: {
   style: string
   personality: string
 }) {
-  // الخطوة 1: نجلب البيانات الحقيقية بالتوازي
+    
   const [colors, fonts] = await Promise.all([
     fetchColorPalette(formData.industry),
     fetchFonts(getCategoryFromStyle(formData.style))
   ])
 
-  // الخطوة 2: نبني الـ prompt
+    
   const prompt = `
 You are a design system expert. You have REAL data to work with.
 
@@ -51,7 +51,7 @@ Return ONLY this JSON with no extra text:
 }
 `
 
-  // الخطوة 3: نرسل لـ Gemini
+    
   const response = await fetch(
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_KEY}`,
   {
@@ -65,7 +65,7 @@ Return ONLY this JSON with no extra text:
   }
 )
 
-  // الخطوة 4: نتحقق من الـ response
+  
   const json = await response.json()
 
   if (!response.ok) {
@@ -73,7 +73,7 @@ Return ONLY this JSON with no extra text:
     throw new Error(json.error?.message ?? 'Gemini request failed')
   }
 
-  // الخطوة 5: نستخرج النص ونحوله لـ JSON
+  
   const text = json.candidates[0].content.parts[0].text
   const clean = text.replace(/```json|```/g, '').trim()
   return JSON.parse(clean)
