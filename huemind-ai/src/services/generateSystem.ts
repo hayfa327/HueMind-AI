@@ -2,20 +2,22 @@ import { fetchColorPalette, fetchFonts } from "./fetchDesignData"
 
 import type { ColorResult } from "./fetchDesignData"
 
- 
 
 export async function generateDesignSystem(formData: {
   projectName: string
   industry: string
   audience: string
+  location: string
   style: string
   personality: string
 }) {
+  // الخطوة 1: نجلب البيانات الحقيقية بالتوازي
   const [colors, fonts] = await Promise.all([
     fetchColorPalette(formData.industry),
     fetchFonts(getCategoryFromStyle(formData.style))
   ])
 
+  // الخطوة 2: نبني الـ prompt
   const prompt = `
 You are a design system expert. You have REAL data to work with.
 
@@ -23,6 +25,7 @@ Brand info:
 - Project: ${formData.projectName}
 - Industry: ${formData.industry}
 - Audience: ${formData.audience}
+- Location: ${formData.location}
 - Style: ${formData.style}
 - Personality: ${formData.personality}
 
@@ -33,7 +36,7 @@ Available real fonts from Google Fonts:
 ${fonts.join(', ')}
 
 Pick the BEST combination and explain why.
-Return ONLY this JSON:
+Return ONLY this JSON with no extra text:
 {
   "primaryColor": { "hex": "#hex", "name": "color name" },
   "secondaryColor": { "hex": "#hex", "name": "color name" },
@@ -48,21 +51,30 @@ Return ONLY this JSON:
 }
 `
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  // الخطوة 3: نرسل لـ Gemini
+  const response = await fetch(
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_KEY}`,
+  {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gpt-4o',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.5
+      contents: [{
+        parts: [{ text: prompt }]
+      }]
     })
-  })
+  }
+)
 
+  // الخطوة 4: نتحقق من الـ response
   const json = await response.json()
-  const text = json.choices[0].message.content
+
+  if (!response.ok) {
+    console.error('Gemini error:', json)
+    throw new Error(json.error?.message ?? 'Gemini request failed')
+  }
+
+  // الخطوة 5: نستخرج النص ونحوله لـ JSON
+  const text = json.candidates[0].content.parts[0].text
   const clean = text.replace(/```json|```/g, '').trim()
   return JSON.parse(clean)
 }

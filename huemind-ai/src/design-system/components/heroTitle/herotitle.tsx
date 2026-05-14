@@ -5,10 +5,10 @@ import styles from './heroTiltle.module.css'
 
 const words = [
   'Simple',
-  'Beautiful',
-  'Scalable',
+  'Fast',
+  'AI-Powered',
+  'Custom',
   'Intelligent',
-  'Consistent',
 ]
 
 function HeroTitle() {
