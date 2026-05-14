@@ -3,6 +3,8 @@ import styles from './designForm.module.css';
 import HeroTitle from '../heroTitle/herotitle';
 import LoadingScreen from '../loadingScreen/loadingScreen';
 import { generateDesignSystem } from  "../../../services/generateSystem";
+import ResultPage from  "../ResultPage/ResultPage";
+
 
 
 interface DesignResult {
@@ -66,18 +68,13 @@ function DesignForm() {
     }
   }
 
-  if (loading) {
-    return <LoadingScreen />
-  }
+  if (loading) return <LoadingScreen />
 
   if (error) {
     return (
       <section className={styles.container}>
         <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
-        <button
-          className={styles.button}
-          onClick={() => setError('')}
-        >
+        <button className={styles.button} onClick={() => setError('')}>
           Try Again
         </button>
       </section>
@@ -86,72 +83,17 @@ function DesignForm() {
 
   if (result) {
     return (
-      <section className={styles.resultPage}>
-        <div className={styles.resultContainer}>
-          <h2 className={styles.resultTitle}>
-            Generated Design System
-          </h2>
-
-          <div className={styles.paletteGrid}>
-            <div className={styles.colorCard}>
-              <div
-                className={styles.colorPreview}
-                style={{ background: result.primaryColor.hex }}
-              />
-              <div className={styles.colorInfo}>
-                <h3>Primary</h3>
-                <p>{result.primaryColor.hex}</p>
-                <p>{result.primaryColor.name}</p>
-              </div>
-            </div>
-
-            <div className={styles.colorCard}>
-              <div
-                className={styles.colorPreview}
-                style={{ background: result.secondaryColor.hex }}
-              />
-              <div className={styles.colorInfo}>
-                <h3>Secondary</h3>
-                <p>{result.secondaryColor.hex}</p>
-                <p>{result.secondaryColor.name}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.typographyCard}>
-            <p className={styles.label}>Typography</p>
-            <h3>{result.fontPrimary}</h3>
-            <p>Body: {result.fontSecondary}</p>
-          </div>
-
-          <div className={styles.accessibilityCard}>
-            <p className={styles.label}>Accessibility</p>
-            <p>WCAG {result.wcagLevel} compliant</p>
-          </div>
-
-          <div className={styles.typographyCard}>
-            <p className={styles.label}>AI Reasoning</p>
-            <p>{result.reasoning}</p>
-          </div>
-
-          <div className={styles.typographyCard}>
-            <p className={styles.label}>Design Tokens</p>
-            <p>Border Radius: {result.tokens.borderRadius}</p>
-            <p>Spacing: {result.tokens.spacing}</p>
-          </div>
-
-          <button
-            className={styles.button}
-            onClick={() => setResult(null)}
-          >
-            Generate Another →
-          </button>
-        </div>
-      </section>
+      <ResultPage
+        result={result}
+        projectName={formData.projectName}
+        onReset={() => setResult(null)}
+      />
     )
   }
 
   return (
+
+    
     <section className={styles.container}>
       <div className={styles.formWrapper}>
         <div className={styles.content}>
@@ -271,4 +213,4 @@ function DesignForm() {
   )
 }
 
-export default DesignForm;
+export default DesignForm
