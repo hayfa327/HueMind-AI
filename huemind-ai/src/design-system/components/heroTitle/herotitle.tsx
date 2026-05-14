@@ -6,9 +6,9 @@ import styles from './heroTiltle.module.css'
 const words = [
   'Simple',
   'Fast',
-  'AI-Powered',
+   
   'Custom',
-  'Intelligent',
+   
 ]
 
 function HeroTitle() {
