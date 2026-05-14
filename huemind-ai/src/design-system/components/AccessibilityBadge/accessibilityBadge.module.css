@@ -1,0 +1,56 @@
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  width: 280px;
+}
+
+.badgeAA {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+  margin-bottom: 24px;
+}
+
+.badgeAAA {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #dbeafe;
+  color: #1e40af;
+  margin-bottom: 24px;
+}
+
+.ratio {
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-family: monospace;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #737373;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 14px;
+  color: #737373;
+  line-height: 1.6;
+}
