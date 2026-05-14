@@ -1,0 +1,56 @@
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  width: 320px;
+}
+
+.role {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #737373;
+  margin-bottom: 20px;
+}
+
+.preview {
+  font-size: 80px;
+  font-family: var(--font-preview, sans-serif);
+  color: #111;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.info {
+  border-top: 1px solid #f0ede8;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fontName {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.category {
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.scaleRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.scaleItem {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: #f6f5f2;
+  border-radius: 100px;
+  color: #737373;
+}
