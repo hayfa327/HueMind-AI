@@ -1,4 +1,4 @@
-import styles from './resultPage.module.css'
+import styles from './ResultPage.module.css'
 
 interface DesignResult {
   primaryColor: { hex: string; name: string }
