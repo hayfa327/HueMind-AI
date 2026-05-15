@@ -1,8 +1,8 @@
-# HueMind AI 
+ # HueMind AI 
 
 > **AI-powered design system generation — from brand intent to production-ready tokens in seconds.**
 
-HueMind AI was built to explore the intersection of artificial intelligence, design systems, accessibility, and modern frontend architecture. It's not just a color picker — it's a full design system generator that thinks in tokens, scales, and semantics.
+HueMind AI was built to explore the intersection of artificial intelligence, design systems, accessibility, and modern frontend architecture. Describe your brand in plain English — HueMind returns a complete design system: colors, typography, semantic tokens, and accessibility scores.
 
 ---
 
@@ -10,83 +10,100 @@ HueMind AI was built to explore the intersection of artificial intelligence, des
 
 | Feature | Description |
 |---|---|
-| 🎨 **Palette Generation** | AI-generates harmonious color palettes tailored to your brand personality |
-| 🔤 **Typography Systems** | Complete type scales with pairing recommendations and optical sizing |
-| ♿ **Accessibility Analysis** | WCAG contrast ratios, AA/AAA compliance checks, and remediation suggestions |
-| 🏷️ **Semantic Tokens** | Design tokens structured for real-world use: `color.surface.default`, `text.brand.primary` |
-| 🤖 **AI-Driven Branding** | Describe your brand in plain English — HueMind does the rest |
+| 🎨 **Palette Generation** | Real color palettes from The Color API, selected by AI based on your industry |
+| 🔤 **Typography Systems** | Font pairing from Google Fonts API with full type scale preview |
+| ♿ **Accessibility Analysis** | WCAG AA/AAA compliance with real contrast ratio calculations |
+| 🏷️ **Semantic Tokens** | Production-ready tokens: `border-radius`, `spacing`, `color` |
+| 🤖 **AI-Driven Branding** | Gemini 2.5 Flash analyzes real data and explains every decision |
+| 📖 **Storybook Documentation** | Every component documented and testable in isolation |
 
 ---
 
 ##  Tech Stack
 
 ```
-React 18          → Component architecture & UI
+React 19          → Component architecture & UI
 TypeScript        → Type safety across the entire codebase
 Vite              → Blazing-fast dev server & build tooling
 CSS Modules       → Scoped, maintainable styling
-OpenAI API        → AI palette, token, and typography generation
+Gemini 2.5 Flash  → AI palette, token, and typography generation
+The Color API     → Real color palettes (no API key needed)
+Google Fonts API  → 1500+ real fonts by category
 Framer Motion     → Fluid animations and transition design
-Storybook         → Component development & design system documentation
+Storybook 10      → Component development & design system documentation
+Vercel            → Serverless backend + deployment
 ```
 
 ---
 
-##  Architecture
-
-HueMind is structured around four core layers:
+## Architecture
 
 ```
 src/
-├── components/          # Reusable, atomic UI components
-│   ├── ColorSwatch/
-│   ├── TokenDisplay/
-│   ├── TypographyScale/
-│   └── AccessibilityBadge/
+├── design-system/
+│   └── components/
+│       ├── ColorCard/           # Reusable color display component
+│       ├── TypographyCard/      # Font preview component
+│       ├── TokenCard/           # Design token display component
+│       ├── AccessibilityBadge/  # WCAG compliance component
+│       ├── ResultPage/          # Full design system result view
+│       ├── designForm/          # Main input form
+│       ├── heroTitle/           # Animated heading component
+│       └── loadingScreen/       # Loading state component
 │
-├── features/            # Domain-specific feature modules
-│   ├── palette/         # Palette generation & display
-│   ├── typography/      # Type system generation
-│   ├── tokens/          # Semantic token builder
-│   └── accessibility/   # WCAG analysis & reporting
+├── services/
+│   ├── fetchDesignData.ts       # The Color API + Google Fonts API
+│   └── generateSystem.ts        # Prompt builder + Gemini API call
 │
-├── services/            # External integrations & business logic
-│   ├── openai.ts        # AI prompt orchestration
-│   ├── tokenizer.ts     # Token naming & structure
-│   └── a11y.ts          # Contrast ratio calculations
-│
-└── state/               # Global state management
-    ├── designSystemStore.ts
-    └── sessionStore.ts
+└── stories/
+    ├── ColorCard.stories.tsx
+    ├── TypographyCard.stories.tsx
+    ├── TokenCard.stories.tsx
+    └── AccessibilityBadge.stories.tsx
+
+api/
+└── generate.ts                  # Vercel serverless function (Gemini proxy)
 ```
 
 ---
 
 ##  AI Workflow
 
-Every design system starts with a single user prompt. Here's how HueMind turns intent into tokens:
+```
+User fills the form
+(projectName, industry, audience, style, personality)
+        ↓
+Fetch real data in parallel:
+├── The Color API  → real color palette based on industry
+└── Google Fonts   → real fonts based on visual style
+        ↓
+Build intelligent prompt with real data
+        ↓
+Vercel Backend (api/generate.ts)
+        ↓
+Gemini 2.5 Flash analyzes and selects
+        ↓
+Structured JSON Response
+        ↓
+Dynamic UI Rendering
+(live preview, contrast ratios, type scale, CSS export)
+```
+
+---
+
+##  Storybook Components
 
 ```
-User Input (brand description)
-        ↓
-  Prompt Engineering
-  (context + constraints injected)
-        ↓
-  OpenAI API Request
-        ↓
-  Structured JSON Response
-  (palette, typography, tokens)
-        ↓
-  Validation + Normalization
-        ↓
-  Dynamic UI Rendering
-  (live preview, exportable output)
+Design System/
+├── ColorCard          → Color swatch with hex, name, and Aa preview
+├── TypographyCard     → Font preview with type scale
+├── TokenCard          → Border radius, spacing, and color tokens
+└── AccessibilityBadge → WCAG AA/AAA compliance display
 ```
 
-Example prompt sent to OpenAI:
-> *"A fintech startup targeting Gen Z. Bold but trustworthy. Dark mode first."*
-
-HueMind returns a complete design system: primary/secondary/neutral palettes, a type scale, semantic token names, and accessibility scores — all in one response.
+```bash
+npm run storybook
+```
 
 ---
 
@@ -95,12 +112,13 @@ HueMind returns a complete design system: primary/secondary/neutral palettes, a 
 ### Prerequisites
 
 - Node.js `>=18`
-- An OpenAI API key
+- Gemini API key (free from aistudio.google.com)
+- Google Fonts API key (free from console.cloud.google.com)
 
 ### Installation
 
 ```bash
-git clone  https://github.com/hayfa327/HueMind-AI.git
+git clone https://github.com/hayfa327/HueMind-AI.git
 cd huemind-ai
 npm install
 ```
@@ -108,8 +126,8 @@ npm install
 ### Development
 
 ```bash
-npm run dev          # Start Vite dev server
-npm run storybook    # Launch Storybook component explorer
+npm run dev          # Start Vite dev server (localhost:5173)
+npm run storybook    # Launch Storybook (localhost:6006)
 npm run build        # Production build
 ```
 
@@ -117,48 +135,37 @@ npm run build        # Production build
 
 ##  Environment Variables
 
-Create a `.env.local` file in the project root:
+Create a `.env` file in the project root:
 
 ```env
-VITE_OPENAI_API_KEY=your_openai_api_key_here
+GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxxxxx
+VITE_GOOGLE_FONTS_KEY=AIzaSyxxxxxxxxxxxxxxxx
 ```
 
->  Never commit your `.env.local` file. It's already in `.gitignore`.
+For Vercel deployment, add these in Vercel Dashboard under Settings > Environment Variables.
 
 ---
 
 ##  Roadmap
 
-These features are planned or actively being explored:
-
-- [ ] **Figma Export** — Push generated tokens directly into a Figma file via the API
-- [ ] **Tailwind Export** — One-click `tailwind.config.js` generation from your token set
-- [ ] **Theme Marketplace** — Browse, fork, and remix community-generated design systems
-- [ ] **Saved Projects** — Persist and version your design systems across sessions
-- [ ] **Authentication** — User accounts with project history and team sharing
-- [ ] **CSS / JSON Export** — Download tokens in W3C Design Token format
-- [ ] **Dark Mode Toggle** — Preview your system in both light and dark contexts
+- [ ] Figma Export
+- [ ] Tailwind Export
+- [ ] Theme Marketplace
+- [ ] Saved Projects
+- [ ] Authentication
+- [ ] Dark Mode Preview
 
 ---
 
-##  Work in Progress
+## 💡 Why This Project Exists
 
-HueMind is under active development. The current focus is:
-
-- Refining the AI prompt structure for more consistent JSON output
-- Building out the token display UI with copy-to-clipboard support
-- Accessibility score visualization (chart-based WCAG reporting)
-- Storybook documentation for all core components
-
-Screenshots will be added once the UI reaches a stable visual design.
+Most design tools are disconnected from the thinking behind design systems. HueMind AI closes that gap — letting developers and designers describe what they want in natural language, and receive structured, production-ready output that respects real design system principles.
 
 ---
 
-##  Why This Project Exists
+##  Use of AI Tools
 
-Most design tools are disconnected from the *thinking* behind design systems. HueMind AI was created to close that gap — letting developers and designers describe what they want in natural language, and receive structured, production-ready output that respects real design system principles.
-
-It's also a personal deep-dive into prompt engineering, structured AI output, and the challenge of making AI output feel *intentional* rather than random.
+This project was built with AI assistance (Claude) for prompt engineering, API integration guidance, and debugging. All design decisions and implementation were driven by the developer.
 
 ---
 
