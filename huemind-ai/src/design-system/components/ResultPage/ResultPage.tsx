@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './ResultPage.module.css'
 
 interface DesignResult {
@@ -65,6 +66,18 @@ export default function ResultPage({ result, projectName, onReset }: ResultPageP
   const secondaryText = getTextColor(secondary)
   const contrastRatio = getContrastRatio(primary, '#ffffff')
   const contrastDark = getContrastRatio(primary, '#111111')
+
+  useEffect(() => {
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = `https://fonts.googleapis.com/css2?family=${
+    result.fontPrimary.replace(/ /g, '+')
+  }:wght@400;700&family=${
+    result.fontSecondary.replace(/ /g, '+')
+  }:wght@400;500&display=swap`
+  document.head.appendChild(link)  
+  return () => { document.head.removeChild(link) }
+}, [result.fontPrimary, result.fontSecondary])
 
   return (
     <div className={styles.page}>
