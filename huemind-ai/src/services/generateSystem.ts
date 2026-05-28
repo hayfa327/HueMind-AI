@@ -65,9 +65,8 @@ Return ONLY this JSON with no extra text:
   candidates?: { content: { parts: { text: string }[] } }[]
   error?: { message: string }
 }
-console.log('Full response:', JSON.stringify(json, null, 2))
-
-// لو 503 Gemini مشغول
+ 
+ 
 if (response.status === 503) {
   throw new Error('Gemini is busy. Please try again in a few seconds.')
 }
