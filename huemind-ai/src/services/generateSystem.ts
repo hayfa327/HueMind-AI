@@ -61,18 +61,29 @@ Return ONLY this JSON with no extra text:
 });
 
   
-  const json = await response.json()
-
-  if (!response.ok) {
-    console.error('Gemini error:', json)
-    throw new Error(json.error?.message ?? 'Gemini request failed')
-  }
-
-  
-  const text = json.candidates[0].content.parts[0].text
-  const clean = text.replace(/```json|```/g, '').trim()
-  return JSON.parse(clean)
+   const json = await response.json() as {
+  candidates?: { content: { parts: { text: string }[] } }[]
+  error?: { message: string }
 }
+console.log('Full response:', JSON.stringify(json, null, 2))
+
+// لو 503 Gemini مشغول
+if (response.status === 503) {
+  throw new Error('Gemini is busy. Please try again in a few seconds.')
+}
+
+if (!response.ok) {
+  console.error('Gemini error:', json)
+  throw new Error(json.error?.message ?? 'Gemini request failed')
+}
+
+if (!json.candidates || json.candidates.length === 0) {
+  throw new Error('No response from Gemini. Please try again.')
+}
+
+const text = json.candidates[0].content.parts[0].text
+const clean = text.replace(/```json|```/g, '').trim()
+return JSON.parse(clean)
 
 function getCategoryFromStyle(style: string): string {
   const map: Record<string, string> = {
@@ -83,4 +94,5 @@ function getCategoryFromStyle(style: string): string {
     'Glassmorphism': 'sans-serif'
   }
   return map[style] ?? 'sans-serif'
+}
 }
